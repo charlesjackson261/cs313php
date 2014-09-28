@@ -29,8 +29,8 @@
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="index.php">Home</a></li>
-                                <li><a href="assignments.php">Assignments</a></li>
+                                <li ><a href="index.php">Home</a></li>
+                                <li class="active"><a href="assignments.php">Assignments</a></li>
 
                                 <!--
                                 <li class="dropdown">
@@ -65,10 +65,10 @@
                 <li data-target="#myCarousel" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <div id="first-slide" class="item active">
-                    <!--<img src="https://lh5.googleusercontent.com/-jrx0srS38R8/U62elZUBhEI/AAAAAAAAHL8/kxe4UDiG3bU/w1199-h899-no/IMG_20140627_093216.jpg" alt="First slide"> -->
+                <div id="" class="item active">
                     <div class="container">
                         <div class="carousel-caption">
+                            Comming Soon
                         </div>
                     </div>
                 </div>
@@ -90,71 +90,6 @@
 
 
 
-        <!-- Marketing messaging and featurettes
-================================================== -->
-        <!-- Wrap the rest of the page in another container to center all the content. -->
-
-        <div class="container marketing">
-
-
-            <!-- Three columns of text below the carousel -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <img class="img-circle" src="https://lh3.googleusercontent.com/-UZ3HWTJWACo/UoDuZvGKD9I/AAAAAAAAEBo/AGeppeZdySw/w674-h899-no/IMG_20131111_064854.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-                    <h2>Charles Jackson</h2>
-                    <p></p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-6">
-                    <img class="img-circle" src="http://cdn.flaticon.com/png/256/45802.png" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-                    <h2>Assignments</h2>
-                    <p>Comming Soon.</p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
-
-
-            <!-- START THE FEATURETTES -->
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">I am a <span class="text-muted">Husband</span></h2>
-                    <p class="lead">I have been married to my wife, Hailey, and eternal companion for the last 15 glorious years.</p>
-                </div>
-                <div class="col-md-5">
-                    <img class="featurette-image img-responsive" src="https://lh5.googleusercontent.com/-TzKODamU8cM/U9mrT9rP-sI/AAAAAAAAHbg/fp3jPe30tns/w1199-h899-no/IMG_20140730_193406.jpg" alt="Generic placeholder image">
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-5">
-                    <img class="featurette-image img-responsive" src="https://lh5.googleusercontent.com/-m5oIhWllhrk/UrUtDukwi0I/AAAAAAAAFHQ/M28ppxuy1wY/w800-h600-no/IMG_20131213_153539-SNOW.gif" alt="Generic placeholder image">
-                </div>
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">I am a <span class="text-muted">Father</span></h2>
-                    <p class="lead">I have three children, Ben 7, Sofia 6, and Lily 3.</p>
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">And lastly, I am a <span class="text-muted">Coder.</span></h2>
-                    <p class="lead">I have been working in software development for the last 20 years. I have seen a great many things come and go.</p>
-                </div>
-                <div class="col-md-5">
-                    <img class="featurette-image img-responsive" src="https://lh3.googleusercontent.com/-sTqmEgnhkGM/Ub0XA2c4-KI/AAAAAAAAB6M/PwUQ11qD56M/w674-h899-no/IMG_20130615_175817.jpg" alt="Generic placeholder image">
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-
-            <!-- /END THE FEATURETTES -->
 
 
             <!-- FOOTER -->
