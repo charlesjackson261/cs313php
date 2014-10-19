@@ -3,11 +3,15 @@
 defined('CS313') or die("Sorry, you are not allowed to directly access this page.<br /> Please press the back button in your browser.");
 
 // if we have made it this far the page has made it by the controller.
+require_once('sharedUtilities.php');
+require_once('classes/templateEngine.class.php');
+require_once('classes/log.class.php');
 
 // check the host to determine which connection information to use
 $whitelist = array('127.0.0.1', "::1");
 
 $isProd = false;
+$debug = false;
 
 if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
     // not valid
@@ -19,40 +23,9 @@ if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
         $debug = true;
     }
 
-// configure the database
-try
-{
-    if ($isProd) {
-        $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-        $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-        $dbName = 'php';
+// site configuration
+$pageTitle = 'Charles Jackson - CS313 Project';
+$log = new Log("Main Log");
 
-        // root user
-        $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-        $dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-        
-        /*
-        // read only user
-        $dbUser = 'php-local';
-        $dbPassword = 'jASpuruZUChequBegEfrABraW8';
-        */
-        
-    } else {
-        $dbUser = "root";
-        $dbPassword = "";
-        $dbHost = '127.0.0.1';
-        $dbPort = 3306;
-        $dbName = 'galaxy_dev';
-    }
-    $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-
-    unset($dbUser);
-    unset($dbPassword);
-    unset($dbHost);
-    unset($dbname);
-}
-catch (PDOException $ex)
-{
-    echo "Error!: " . $ex->getMessage();
-    die();
-}
+// connect to the database
+require_once('dbConnector.php');

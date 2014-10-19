@@ -1,4 +1,6 @@
 <?php
+// prevent direct access
+defined('CS313') or die("Sorry, you are not allowed to directly access this page.<br /> Please press the back button in your browser.");
 
 if (isset($data) && is_array($data))
 {
