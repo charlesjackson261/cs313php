@@ -27,6 +27,8 @@ if (!isset($input['action']))
 // buffer the output of the pages
 ob_start();
 
+$log->action = $action;
+
 if ($action == 'default')
 {
     // load the default homepage

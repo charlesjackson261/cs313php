@@ -31,9 +31,9 @@ class Log
 
         echo 'LogName: ' . $this->logName;
         // use the template engine to display the error logs.
-        foreach($this->logItems as $logItem)
+        foreach($this->logItems as $key=>$logItem)
         {
-            echo '<pre>' . print_r($logItem, true) . '</pre>';
+            echo '<pre>' . $key . ': ' . print_r($logItem, true) . '</pre>';
 
         }
         return ob_get_clean();
