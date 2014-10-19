@@ -25,15 +25,24 @@ try
     if ($isProd) {
         $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
         $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+        $dbName = 'php';
+
+        // root user
         $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
         $dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-        $dbName = 'php';
+        
+        /*
+        // read only user
+        $dbUser = 'php-local';
+        $dbPassword = 'jASpuruZUChequBegEfrABraW8';
+        */
+        
     } else {
         $dbUser = "root";
         $dbPassword = "";
         $dbHost = '127.0.0.1';
         $dbPort = 3306;
-        $dbName = 'cs313';
+        $dbName = 'galaxy_dev';
     }
     $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
