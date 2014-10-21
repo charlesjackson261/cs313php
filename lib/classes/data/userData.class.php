@@ -6,11 +6,13 @@ defined('CS313') or die("Sorry, you are not allowed to directly access this page
 
 class User
 {
+    // TODO: Add in the code to create, retrive, update, delete entries from this table
     protected $db;
     
     public function __construct($db)
     {
         $this->db =& $db;
+        
     }
 
     public function __get($data)
