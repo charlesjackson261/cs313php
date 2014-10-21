@@ -9,12 +9,11 @@
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="css/main.css" rel="stylesheet">
-        <link href="css/carousel.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <link href="../css/carousel.css" rel="stylesheet">
     </head>
     <body>
 
-        <!-- navigation start -->
         <div class="navbar-wrapper">
             <div class="container">
 
@@ -31,50 +30,27 @@
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.php">Home</a></li>
+                                <li class="active"><a href="index.php">Home</a></li>
                                 <li><a href="assignments.php">Assignments</a></li>
-                                <li class="active"><a href="index.php?action=login">Login</a></li>
 
                                 <!--
-<li class="dropdown">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-<ul class="dropdown-menu" role="menu">
-<li><a href="#">Action</a></li>
-<li><a href="#">Another action</a></li>
-<li><a href="#">Something else here</a></li>
-<li class="divider"></li>
-<li class="dropdown-header">Nav header</li>
-<li><a href="#">Separated link</a></li>
-<li><a href="#">One more separated link</a></li>
-</ul>
-</li>
--->
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li class="dropdown-header">Nav header</li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li><a href="#">One more separated link</a></li>
+                                    </ul>
+                                </li>
+                                -->
                             </ul>
                         </div>
                     </div>
                 </div>
 
             </div>
-        </div>
-        <!-- navigation start -->
-
-        <!-- message engine -->
-        <div class="messages">
-            <!--
-            <div class="container">
-                <div class="alert alert-dismissable alert-error">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-
-                    Test error
-                </div>
-                <div class="alert alert-dismissable alert-warning">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    Test error
-                </div>
-                <div class="alert alert-dismissable alert-success">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    Test error
-                </div>
-            </div>
--->
         </div>

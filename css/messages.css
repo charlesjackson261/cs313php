@@ -1,0 +1,21 @@
+.messages {
+    position: absolute;
+    top: 10px;
+    z-index: 1000;
+    width: 100%;
+}
+
+.messages .alert {
+    margin-bottom: 5px;
+}
+
+.alert-error {
+    background-image: -webkit-linear-gradient(top,#fce7e3 0,#f8c9c0 100%);
+    background-image: -o-linear-gradient(top,#fce7e3 0,#f8c9c0 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fce7e3),to(#f8c9c0));
+    background-image: linear-gradient(to bottom,#fce7e3 0,#f8c9c0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fce7e3', endColorstr='#f8c9c0', GradientType=0);
+    background-repeat: repeat-x;
+    border-color: #f5ab9e;
+}
+

@@ -1,3 +1,52 @@
-body{
-    margin-top: 90px;
+@import url('login.css');
+@import url('messages.css');
+
+body {
+    /* margin-top: 90px; */
+}
+
+
+
+.attract {
+    padding-top: 90px;
+    /* background: orange; */
+    /* height: 380px; */
+    width: 100%;
+    background: url(../img/abstract-yellow.jpg) center center fixed;
+    background-size: cover;
+
+    -webkit-box-shadow: inset 0px -5px 25px 0px rgba(0,0,0,.35);
+    -moz-box-shadow: inset 0px -5px 25px 0px rgba(0,0,0,.35);
+    box-shadow: inset 0px -5px 25px 0px rgba(0,0,0,.35);
+}
+
+.page-body {
+    background: #fff;
+    min-height: 400px;
+    height: 100%;
+}
+
+.container {
+    position: relative;
+}
+
+.grad-blue {
+
+    background: #f7fbfc; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f7fbfc 0%, #d9edf2 40%, #add9e4 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7fbfc), color-stop(40%,#d9edf2), color-stop(100%,#add9e4)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #f7fbfc 0%,#d9edf2 40%,#add9e4 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #f7fbfc 0%,#d9edf2 40%,#add9e4 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #f7fbfc 0%,#d9edf2 40%,#add9e4 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #f7fbfc 0%,#d9edf2 40%,#add9e4 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfc', endColorstr='#add9e4',GradientType=0 ); /* IE6-9 */
+
+}
+
+footer {
+    margin-top: 30px;
+}
+
+.selected {
+    border: 10px solid red;
 }

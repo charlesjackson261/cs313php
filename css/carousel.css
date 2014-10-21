@@ -125,8 +125,8 @@ body {
     margin-top: 20px;
   }
   .navbar-wrapper .container {
-    padding-right: 15px;
-    padding-left: 15px;
+    /* padding-right: 15px;
+    padding-left: 15px; */
   }
   .navbar-wrapper .navbar {
     padding-right: 0;
