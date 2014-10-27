@@ -8,11 +8,11 @@ $(document).ready(function(){
 
         e.preventDefault();
         var form = $(e.target).parents("form");
-        
+
         // get the data from the form
         var uname = $("#un").val();
         var upass = $("#up").val();
-        
+
         // clean the input from the user.
         // TODO: create a function to clean the input from the user, checking for hacking attempts.
 
@@ -21,10 +21,10 @@ $(document).ready(function(){
             uname = encodeData(uname);
         if (upass.length > 0)
             upass = encodeData(upass);
-        
+
         // build the data array
         var data = {action:"login", method:"json" , un:uname, up:upass};
-        
+
         // post the login to the system
         var url = "index.php";
         ajaxCall(url, data);
@@ -62,8 +62,40 @@ function ajaxCall(url, data)
         url: url,
         data: data
     })
-    .done(function( msg ) {
-        displayLoginMsg("Login Success", msg, 'success');
+    .done(function( ajaxresponse ) {
+
+
+        try {
+            var response = jQuery.parseJSON( ajaxresponse );
+        } catch (err) {
+            alert("Error: " + ajaxresponse);
+        }
+
+        if (response.response_code == 1)
+        {
+            // all is good
+            displayLoginMsg("Login Success", '', 'success');
+            
+            // add a block to the form
+            $('#frmLogin').css('display', 'none');
+            
+            // redirect the user to the dashboard
+            var redirect = '';
+            $.redirectPost(redirect, {action: 'dashboard', sub: '12'});
+
+        } else {
+            // failed login
+            if (response.msgs.length > 0)
+            {
+                displayLoginMsg("Login Error", response.msgs, 'error');
+
+            } else {
+                displayLoginMsg("Login Error", '', 'error');
+            }
+        }
+
+        // displayLoginMsg("Login Success", ajaxresponse, 'success');
+
     }).fail(function( jqXHR, textStatus ) {
         displayLoginMsg("Login Failed:", textStatus, 'warning');
         // alert( "Request Failed: " + textStatus );
@@ -78,5 +110,18 @@ function displayLoginMsg (boldMsg, msg, msgType)
 }
 
 function displayAppError (errMsg) {
-    
+
 }
+
+// jquery extend function
+$.extend(
+{
+    redirectPost: function(location, args)
+    {
+        var form = '';
+        $.each( args, function( key, value ) {
+            form += '<input type="hidden" name="'+key+'" value="'+value+'">';
+        });
+        $('<form action="' + location + '" method="POST">' + form + '</form>').appendTo($(document.body)).submit();
+    }
+});

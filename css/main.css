@@ -50,3 +50,12 @@ footer {
 .selected {
     border: 10px solid red;
 }
+
+.opaque {
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=10)"; // IE8
+    filter: alpha(opacity=50); // IE 5-7
+    opacity: 0.5;
+    -webkit-opacity: 0.5;
+    -moz-opacity: 0.5;
+    filter:alpha(opacity=50); 
+}

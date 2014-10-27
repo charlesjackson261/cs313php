@@ -16,6 +16,7 @@ require_once('sharedUtilities.php');
 require_once('classes/templateEngine.class.php');
 require_once('classes/log.class.php');
 require_once('classes/jsonResponse.class.php');
+require_once('classes/sysmsg.class.php');
 
 // check the host to determine which connection information to use
 $whitelist = array('127.0.0.1', "::1");
@@ -24,6 +25,7 @@ $whitelist = array('127.0.0.1', "::1");
 $isProd = false;
 $debug = false;
 $javascript = array();
+$sysmsg = array();
 
 // set if the app is in poduction or development
 if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){

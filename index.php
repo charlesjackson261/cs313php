@@ -10,6 +10,7 @@ require_once('lib/config.php');
 
 // check the post or get for an action
 
+// set the method for the request
 $isJson = false;
 $isHtml = false;
 
@@ -30,6 +31,7 @@ switch(strtolower($input['method']) ) {
 
 };
 
+// add statments to the log for debug
 if (isset($input))
 {
     // pop the input into variables
@@ -40,6 +42,7 @@ if (isset($input))
     $log->javascript = count($javascript) . ' ' . print_r($javascript, true);
 } 
 
+// check the action and set to home if not defined.
 if (!isset($input['action']))
 {
     $action = 'default';
@@ -59,29 +62,31 @@ if ($action == 'default')
     echo $view;
 
 } else if ($action == 'login') {
-    if ($isHtml)
-    {
-        // display the webpage
-        $view = new Template("views/login.php");
-        $view->action = $action;
-        echo $view;
-    } else if ($isJson) {
-        // check for a login.
-        
-        
-        
-        $jr = new JsonResponse("LoginResponse");
-        $jr->awesome = "Something more awesome";
-        
-        echo $jr;
-        
-    } else {
-        echo "Transport error";
-    }
 
+    // check the integrity of the app
+    verifyApp();
+    
+    // run the login controller
+    include('lib/controllers/login.controller.php');
+    
+} else if ($action == 'logout') {
+
+    // run the logout controller
+    include('lib/controllers/logout.controller.php');
+    
+} else if ($action == 'dashboard') {
+
+    // check the integrity of the app
+    verifyApp();
+    
+    // run the dashboard controller
+    include('lib/controllers/dashboard.controller.php');
+    
+    
 } else if ($action == 'php-database') {
     echo 'php-database';
 }
+
 $content = ob_get_clean();
 
 // add the session to the debug script

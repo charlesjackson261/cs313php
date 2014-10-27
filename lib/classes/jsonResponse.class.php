@@ -8,13 +8,30 @@ class JsonResponse
 {
     protected $data = array();
     
-    public function __construct($type)
+    // $response_code = 1 success, 0 error;
+    public function __construct($type, $response_code=0)
     {
         $this->data['type'] = $type;
-        $this->data['messges'] = array();
+        $this->data['response_code'] = $response_code;
+        $this->data['msgs'] = array();
         $this->data['data'] = array();
     }
 
+    public function setResponseCode($response_code)
+    {
+        $this->data['response_code'] = $response_code;
+    }
+    
+    public function getResponseCode()
+    {
+        return $this->data['response_code'];
+    }    
+    
+    public function addMsg($msg)
+    {
+        array_push($this->data['msgs'], $msg);
+    }
+    
     public function __get($key)
     {
         return $this->data['data'][$key];
@@ -23,6 +40,11 @@ class JsonResponse
     public function __set($key, $value)
     {
         $this->data['data'][$key] = $value;
+    }
+
+    public function dataObj()
+    {
+        return $this->data;
     }
 
     public function __toString()

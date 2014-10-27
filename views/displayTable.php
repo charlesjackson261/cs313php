@@ -2,6 +2,10 @@
 // prevent direct access
 defined('CS313') or die("Sorry, you are not allowed to directly access this page.<br /> Please press the back button in your browser.");
 
+global $data;
+
+// echo '<pre>Data: '.print_r($data, true).'</pre>';
+
 if (isset($data) && is_array($data))
 {
     // generate a table for the data

@@ -1,3 +1,7 @@
+<?php
+global $action;
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -31,9 +35,20 @@
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.php">Home</a></li>
-                                <li><a href="assignments.php">Assignments</a></li>
-                                <li class="active"><a href="index.php?action=login">Login</a></li>
+                                <li class="<?php if ($action == 'default') echo 'active'; ?>"><a href="index.php">Home</a></li>
+                                <?php
+// check to see if the user is logged in
+if (isset($_SESSION['user']))
+{
+                                ?>
+                                <li class="<?php if ($action == 'dashboard') echo 'active'; ?>"><a href="index.php?action=dashboard">Dashboard</a></li>
+                                <?php
+} else {
+                                ?>
+                                <li class="<?php if ($action == 'logout') echo 'active'; ?>"><a href="assignments.php">Assignments</a></li>
+                                <?php
+}
+                                ?>
 
                                 <!--
 <li class="dropdown">
@@ -50,31 +65,52 @@
 </li>
 -->
                             </ul>
-                        </div>
+                            <ul class="nav navbar-nav pull-right">
+                                <?php
+// check to see if the user is logged in
+if (isset($_SESSION['user']))
+{
+    // logged in
+                                ?>
+                                <li class="<?php if ($action == ' logout ') echo 'active'; ?> pull-right"><a href="index.php?action=logout">Logout</a></li>
+                                <?php
+} else {
+    // not logged in
+                                ?>
+                                <li class="<?php if ($action == 'login') echo 'active'; ?> pull-right"><a href="index.php?action=login">Login</a></li>
+                                <?php
+
+}
+                                ?>
+
+                            </ul>
+                        </ul>
+
                     </div>
                 </div>
-
             </div>
+
         </div>
-        <!-- navigation start -->
+    </div>
+    <!-- navigation start -->
 
-        <!-- message engine -->
-        <div class="messages">
-            <!--
-            <div class="container">
-                <div class="alert alert-dismissable alert-error">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
+    <!-- message engine -->
+    <div class="messages">
+        <!--
+<div class="container">
+<div class="alert alert-dismissable alert-error">
+<button type="button" class="close" data-dismiss="alert">×</button>
 
-                    Test error
-                </div>
-                <div class="alert alert-dismissable alert-warning">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    Test error
-                </div>
-                <div class="alert alert-dismissable alert-success">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    Test error
-                </div>
-            </div>
+Test error
+</div>
+<div class="alert alert-dismissable alert-warning">
+<button type="button" class="close" data-dismiss="alert">×</button>
+Test error
+</div>
+<div class="alert alert-dismissable alert-success">
+<button type="button" class="close" data-dismiss="alert">×</button>
+Test error
+</div>
+</div>
 -->
-        </div>
+    </div>

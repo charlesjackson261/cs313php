@@ -38,10 +38,6 @@ if (!defined('CS313'))
             <fieldset>
 
                 <div id="loginMsg">
-                    <div id="loginError" class="alert alert-error">
-                        <!-- button type="button" class="close" data-dismiss="alert">×</button -->
-                        Your username and password do not match
-                    </div>
                 </div>
 
                 <form id="frmLogin" method="POST" action="index.php">
@@ -57,7 +53,7 @@ if (!defined('CS313'))
 
                     <footer class="clearfix">
 
-                        <p><span class="info">?</span><a href="#">Forgot Password</a></p>
+                        <p><!-- span class="info">?</span><a href="#">Forgot Password</a --></p>
 
                     </footer>
 
