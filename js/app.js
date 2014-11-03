@@ -36,33 +36,43 @@ $(document).ready(function(){
         // $(form).addClass('selected');
     });
 
-    
+
     // dashboard buttons
     $('#btnActivateDisplay').click(function () {
 
         // forward the user over to the activation wizard
         window.location.replace("?action=activate");
-        
+
     });
-    
+
     $('.btnUpdateSubscription').click(function () {
 
         alert('btnUpdateSubscription pressed');
-        
+
     });
-    
+
     $('.btnEditDisplay').click(function () {
 
         alert('btnEditDisplay pressed');
-        
-    });
-    
-    $('.btnDeleteDisplay').click(function () {
 
-        alert('btnDeleteDisplay pressed');
-        
     });
-    
+
+    $('.btnDeleteDisplay').click(function (e) {
+
+        // 
+        // alert("btnDeleteDisplay clicked");
+
+        var display_row = e.target;
+        $(display_row).addClass('selected');
+        var row_data = jQuery.parseJSON( $(display_row).parents('tr').attr('data_row') );
+        
+        // alert(row_data);
+
+        if(confirm("Are you sure that you would like to delete display \"" + row_data['display'] + "\"?"))
+            // determine the id of the display that we will be removing.
+            $.redirect('index.php', {'delete_display': row_data['displayid'], 'action': 'dashboard'});
+    });
+
 });
 
 function encodeData(value)

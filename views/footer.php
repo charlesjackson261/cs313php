@@ -1,19 +1,10 @@
-<!-- FOOTER -->
-<div class="container">
-
-    <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
-
-</div><!-- /.container -->    
-
 <?php
 
 global $debug, $log, $javascript;
 
 if ($debug) {
 ?>
+<br>
 <div class="container">
     <div class="alert alert-dismissable alert-success">
         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -27,12 +18,23 @@ if ($debug) {
 }
 
 ?>
+<!-- FOOTER -->
+<div class="container">
+
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2014 Charles Jackson. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+</div><!-- /.container -->    
+
 
 </body>
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="js/jquery.redirect.js"></script>
 
 <script src="js/app.js"></script>
 

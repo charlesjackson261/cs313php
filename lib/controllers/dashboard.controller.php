@@ -15,9 +15,29 @@ if (isset($_SESSION['new_display']))
 
 }
 
+// check to see if we need to perform a data level function
+if (isset($input['delete_display']))
+{
+    if (is_numeric($input['delete_display']))
+    {
+        $_SESSION['warning'] = "Display has been deleted.";
+        header( 'Location: index.php?action=dashboard' ) ;
+        die;
+        
+    } else {
+        $_SESSION['error'] = "Delete function has gone arie.";
+        header( 'Location: index.php?action=dashboard' ) ;
+        die;
+    };
+} else if (isset($input['update_description'])) {
+
+} else if (isset($input['edit_display'])) {
+    // not imp[lemented]
+}
+
 // dashboard
 $display = new Display($db);
-$display->column_list = "display, license, ClientAddress";
+$display->column_list = "d.displayid, display, license, ClientAddress";
 $displays_response = $display->getListByUser($_SESSION['user']['UserID']);
 
 // echo '<pre>'.print_r($displays_response, true).'</pre>';
@@ -25,6 +45,7 @@ $displays_response = $display->getListByUser($_SESSION['user']['UserID']);
 
 $displays = $displays_response->displays;
 
+/*
 $display_action = <<<EOT
 
         <!-- Single button -->
@@ -36,11 +57,17 @@ $display_action = <<<EOT
                 <li><a class="btnUpdateSubscription"><span class="glyphicon glyphicon-pencil"></span>  Update Subscription</a></li>
                 <li><a class="btnEditDisplay"><span class="glyphicon glyphicon-pencil"></span>  Edit Display</a></li>
                 <li><a  class="btnDeleteDisplay"><span class="glyphicon glyphicon-minus-sign"></span>  Delete Display</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
             </ul>
         </div>
 EOT;
+*/
+
+$display_action = <<<EOT
+            <button type="button" class="btn btn-default btnDeleteDisplay">
+                <span class="glyphicon glyphicon-minus-sign"></span>  Delete Display</a>
+            </button>
+EOT;
+
 
 // echo '<pre>Data: '.print_r($data, true).'</pre>';
 
