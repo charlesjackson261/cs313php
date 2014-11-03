@@ -20,10 +20,23 @@ if (isset($input['delete_display']))
 {
     if (is_numeric($input['delete_display']))
     {
-        $_SESSION['warning'] = "Display has been deleted.";
-        header( 'Location: index.php?action=dashboard' ) ;
-        die;
-        
+        // perfom the deletion
+        $display = new Display($db);
+        $jr_result = $display->remove_from_group($_SESSION['user']['UserID'], $input['delete_display']);
+
+        if ($jr_result->dataObj()['response_code'] == 1)
+        {
+            $_SESSION['warning'] = "Display has been deleted.";
+            header( 'Location: index.php?action=dashboard' ) ;
+            die;
+
+        } else {
+            $_SESSION['error'] = "Display could not be deleted.";
+            header( 'Location: index.php?action=dashboard' ) ;
+            die;
+
+        }
+
     } else {
         $_SESSION['error'] = "Delete function has gone arie.";
         header( 'Location: index.php?action=dashboard' ) ;

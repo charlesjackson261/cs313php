@@ -33,7 +33,7 @@ class Display
                 $sql .= ' * ';
 
             $sql .= " FROM display as d ";
-            
+
             $sql .= " left join lkdisplaydg as lkdg on lkdg.DisplayID = d.DisplayID
 left join displaygroup as dg on lkdg.DisplayGroupID = dg.DisplayGroupID
 where dg.DisplayGroup = 'user-" . $userID . "' 
@@ -61,6 +61,66 @@ where dg.DisplayGroup = 'user-" . $userID . "'
             }
 
             $jr->displays = $displays;
+
+            return $jr;
+
+        } catch (Exception $e) {
+            $jr->setResponseCode(0);
+            $jr->addMsg('<pre>Exception: '.print_r($e, true).'</pre>');
+            return $jr;
+        }
+
+        return $jr;
+
+    }
+
+    public function remove_from_group($userID, $displayID)
+    {
+        $jr = new JsonResponse("DisplayResponse", 1);
+
+        try {
+
+            // fertch the group id
+            $sql = "SELECT * FROM displaygroup as dg where dg.DisplayGroup = :userdg";
+            $q = $this->db->prepare($sql);
+            $q->execute(array(':userdg'=>'user-'.$userID ));
+            $user_group = $q->fetch();
+
+            if(!isset($user_group['DisplayGroupID']))
+            {
+                $jr->setResponseCode(0);
+                $jr->addMsg('Group for user cannot be found, terminating the process.');
+                return $jr;
+            }
+
+            $DisplayGroupID = $user_group['DisplayGroupID'];
+
+            // fertch the unassigned group id
+            $sql = "SELECT * FROM displaygroup as dg where dg.DisplayGroup = 'unassigned'";
+            $q = $this->db->prepare($sql);
+            $q->execute();
+            $unassigned_group = $q->fetch();
+
+            if(!isset($unassigned_group['DisplayGroupID']))
+            {
+                $jr->setResponseCode(0);
+                $jr->addMsg('Unassigned Group for user cannot be found, terminating the process.');
+                return $jr;
+            }
+
+            $UnassDisplayGroupID = $unassigned_group['DisplayGroupID'];
+
+            // we have a display group id
+            $sql = "DELETE FROM lkdisplaydg where DisplayID = :DisplayID and DisplayGroupID = :display_group";
+            $delete_stmt = $this->db->prepare($sql);
+            $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+            $delete_stmt->execute(array(':DisplayID'=>$displayID, ':display_group'=>$DisplayGroupID));
+
+            // put them back into the unassigned list
+            $sql = "INSERT INTO lkdisplaydg (DisplayGroupID,DisplayID) VALUES (:DisplayGroupID,:DisplayID)";
+            $insert_stmt = $this->db->prepare($sql);
+            $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+            $insert_stmt->execute(array(':DisplayGroupID'=>$UnassDisplayGroupID, ':DisplayID'=>$displayID));
 
             return $jr;
 
