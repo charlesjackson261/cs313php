@@ -15,27 +15,33 @@ class Display
         $this->db =& $db;
         $this->data['data'] = array();
     }
-    
+
     public function getListByUser($userID)
     {
         $jr = new JsonResponse("DisplayResponse", 1);
 
         try {
-            
+
             // Get the display list
-            
-            $sql = "SELECT ";
-            
+
+            $sql = "SELECT distinct ";
+
             // check to see if the user has supplier a column list;
             if (isset($this->data['data']['column_list']))
                 $sql .= $this->data['data']['column_list'];
             else
                 $sql .= ' * ';
 
-            $sql .= " FROM `display`";
+            $sql .= " FROM display as d ";
             
-            
-            if (!$displays = $this->db->query($sql)->fetchAll()) {
+            $sql .= " left join lkdisplaydg as lkdg on lkdg.DisplayID = d.DisplayID
+left join displaygroup as dg on lkdg.DisplayGroupID = dg.DisplayGroupID
+where dg.DisplayGroup = 'user-" . $userID . "' 
+";
+            // echo $sql;
+            $displays = $this->db->query($sql)->fetchAll();
+
+            if (!isset($displays))  {
                 $jr->setResponseCode(0);
                 $jr->addMsg('A display could not be found. (code 38)');
                 return $jr;

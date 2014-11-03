@@ -69,10 +69,23 @@ if ($action == 'default')
     // run the login controller
     include('lib/controllers/login.controller.php');
     
+} else if ($action == 'register') {
+
+    // check the integrity of the app
+    verifyApp();
+    
+    // run the login controller
+    include('lib/controllers/register.controller.php');
+    
 } else if ($action == 'logout') {
 
     // run the logout controller
     include('lib/controllers/logout.controller.php');
+    
+} else if ($action == 'activate') {
+
+    // run the logout controller
+    include('lib/controllers/activate.controller.php');
     
 } else if ($action == 'dashboard') {
 

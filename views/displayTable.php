@@ -11,7 +11,7 @@ if (isset($data) && is_array($data))
     // generate a table for the data
     $firstRun = true;
 
-    echo '<table border="1px">';
+    echo '<table class="table table-hover" border="1px" data-toggle="table">';
 
     foreach($data as $index=>$dataRow)
     {
@@ -23,7 +23,7 @@ if (isset($data) && is_array($data))
 
             foreach($dataRow as $colName=>$colVal)
             {
-                echo '<td>' . $colName . '</td>';
+                echo '<th>' . $colName . '</th>';
             }
             echo '</tr>';
             $firstRun = false;

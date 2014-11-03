@@ -34,7 +34,35 @@ $(document).ready(function(){
 
 
         // $(form).addClass('selected');
-    })
+    });
+
+    
+    // dashboard buttons
+    $('#btnActivateDisplay').click(function () {
+
+        // forward the user over to the activation wizard
+        window.location.replace("?action=activate");
+        
+    });
+    
+    $('.btnUpdateSubscription').click(function () {
+
+        alert('btnUpdateSubscription pressed');
+        
+    });
+    
+    $('.btnEditDisplay').click(function () {
+
+        alert('btnEditDisplay pressed');
+        
+    });
+    
+    $('.btnDeleteDisplay').click(function () {
+
+        alert('btnDeleteDisplay pressed');
+        
+    });
+    
 });
 
 function encodeData(value)
@@ -75,10 +103,10 @@ function ajaxCall(url, data)
         {
             // all is good
             displayLoginMsg("Login Success", '', 'success');
-            
+
             // add a block to the form
             $('#frmLogin').css('display', 'none');
-            
+
             // redirect the user to the dashboard
             var redirect = '';
             $.redirectPost(redirect, {action: 'dashboard', sub: '12'});
@@ -115,13 +143,13 @@ function displayAppError (errMsg) {
 
 // jquery extend function
 $.extend(
-{
-    redirectPost: function(location, args)
     {
-        var form = '';
-        $.each( args, function( key, value ) {
-            form += '<input type="hidden" name="'+key+'" value="'+value+'">';
-        });
-        $('<form action="' + location + '" method="POST">' + form + '</form>').appendTo($(document.body)).submit();
-    }
-});
+        redirectPost: function(location, args)
+        {
+            var form = '';
+            $.each( args, function( key, value ) {
+                form += '<input type="hidden" name="'+key+'" value="'+value+'">';
+            });
+            $('<form action="' + location + '" method="POST">' + form + '</form>').appendTo($(document.body)).submit();
+        }
+    });

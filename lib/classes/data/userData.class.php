@@ -82,9 +82,6 @@ class User
                 if (is_int($key) || $key == "UserPassword")
                     unset($userInfo[$key]);
             }
-            
-            
-
 
             // $jr->rows = $rows;
             $jr->userinfo = $userInfo;
@@ -97,6 +94,43 @@ class User
         } catch (Exception $e) {
             return '<pre>Exception: '.print_r($e, true).'</pre>';
         }
+
+    }
+
+    public function create($un, $up, $em)
+    {
+
+        $jr = new JsonResponse("CreateUserResponse", 1);
+
+        try {
+
+            // required fields
+            //   usertypeid = '3'
+            //   UserName = ''
+            //   UserPassword = ''
+            //   loggedin = '0'
+            //   homepage = 'dashboard'
+            //   Retired = '0'
+            //   CSPRNG = '0'
+            
+            $sql = "INSERT INTO user (usertypeid,UserName,UserPassword,email,loggedin,homepage,Retired, CSPRNG) VALUES (3,:un,:uph,:em,0,'dashboard',0,0)";
+            $insert_stmt = $this->db->prepare($sql);
+            $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+            $insert_stmt->execute(array(':un'=>$un, ':uph'=>md5($up), ':em'=>$em));
+            // $insert_stmt->execute(array(':un'=>$un, ':uph'=>$up, ':em'=>$em));
+
+            $new_user_id = $this->db->lastInsertId();
+            
+            $jr->new_user_id = $new_user_id;
+            $jr->PDO_error_info = $this->db->errorInfo();
+
+        } catch (Exception $e) {
+            $jr->setResponseCode(0);
+            $jr->addMsg('<pre>Exception: '.print_r($e, true).'</pre> (code 63)');
+            return $jr;
+        }
+
+        return $jr;
 
     }
 

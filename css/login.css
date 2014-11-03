@@ -17,7 +17,7 @@ fieldset {
     margin: 0;
 }
 
-input {
+#frmLogin input {
     border: none;
     font-family: inherit;
     font-size: inherit;
@@ -25,11 +25,11 @@ input {
     -webkit-appearance: none;
 }
 
-input:focus {
+#frmLogin input:focus {
     outline: none;
 }
 
-input[type="submit"] { cursor: pointer; }
+#frmLogin input[type="submit"] { cursor: pointer; }
 
 .clearfix { *zoom: 1; }
 .clearfix:before, .clearfix:after {

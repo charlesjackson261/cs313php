@@ -10,42 +10,48 @@ global $input;
 
 $display = new Display($db);
 $display->column_list = "display, license, ClientAddress";
-$displays_response = $display->getListByUser(2);
+$displays_response = $display->getListByUser($_SESSION['user']['UserID']);
 
 // echo '<pre>'.print_r($displays_response, true).'</pre>';
 // echo '<pre>'.print_r($displays_response->displays, true).'</pre>';
 
-$data = $displays_response->displays;
+$displays = $displays_response->displays;
+
+$display_action = <<<EOT
+
+        <!-- Single button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                Action <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a class="btnUpdateSubscription"><span class="glyphicon glyphicon-pencil"></span>  Update Subscription</a></li>
+                <li><a class="btnEditDisplay"><span class="glyphicon glyphicon-pencil"></span>  Edit Display</a></li>
+                <li><a  class="btnDeleteDisplay"><span class="glyphicon glyphicon-minus-sign"></span>  Delete Display</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+EOT;
 
 // echo '<pre>Data: '.print_r($data, true).'</pre>';
 
-echo '<br><br><br><br>';
+// echo '<br><br><br><br>';
 
-$view = new Template("views/displayTable.php");
-$view->action = $action;
-echo $view;
+// $content = new Template("views/displayTable.php");
+// $content->action = $action;
 
 
 // get a list of displays for this account. it will be based on their permissions
 
 
-/*
 // prepare output
 if ($isHtml)
 {
     // display the webpage
-    $view = new Template("views/login.php");
+    $view = new Template("views/dashboard.php");
     $view->action = $action;
     echo $view;
-} else if ($isJson) {
-    $jr = new JsonResponse("LoginResponse", $isLoginSuccess);
-    $jr->input_data = $input;
-    $jr->login_response = $login_response;
-
-    // echo $jr;
-    echo $login_response;
-
 } else {
     echo "Transport error";
 }
-*/
