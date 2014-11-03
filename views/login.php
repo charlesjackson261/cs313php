@@ -27,17 +27,24 @@ if (!defined('CS313'))
 
 <div class="attract"> <!-- attract block -->
 
-
     <div class="container">
 
         <div id="login-form">
-
-
             <h3>Login</h3>
 
             <fieldset>
 
                 <div id="loginMsg">
+                    <?php 
+if (isset($_SESSION['error']))
+{
+                    ?>
+                    <div id="loginError" class="alert alert-warning"><strong>Warning</strong> <?php echo $_SESSION['error']; ?></div>
+                    <?php
+    unset($_SESSION['error']);
+
+}
+                    ?>
                 </div>
 
                 <form id="frmLogin" method="POST" action="index.php">
@@ -53,7 +60,7 @@ if (!defined('CS313'))
 
                     <footer class="clearfix">
 
-                        <p><!-- span class="info">?</span><a href="#">Forgot Password</a --></p>
+                        <p><a href="?action=register"><span class="info">?</span> Need an Account?</a></p>
 
                     </footer>
 

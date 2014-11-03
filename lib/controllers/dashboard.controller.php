@@ -6,8 +6,16 @@ require_once('lib/classes/data/displayData.class.php');
 
 global $input;
 
-// dashboard
+// check to see if there are any displays that need to be added
+if (isset($_SESSION['new_display']))
+{
+    // new display found
+    header( 'Location: index.php?action=activate' ) ;
+    die;
 
+}
+
+// dashboard
 $display = new Display($db);
 $display->column_list = "display, license, ClientAddress";
 $displays_response = $display->getListByUser($_SESSION['user']['UserID']);
