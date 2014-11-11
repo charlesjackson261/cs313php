@@ -95,6 +95,13 @@ if ($action == 'default')
     // run the dashboard controller
     include('lib/controllers/dashboard.controller.php');
     
+} else if ($action == 'dev') {
+
+    // block header and footer output
+    $isHtml = false;
+    // run the dashboard controller
+    include('lib/controllers/dev.controller.php');
+    
     
 } else if ($action == 'php-database') {
     echo 'php-database';

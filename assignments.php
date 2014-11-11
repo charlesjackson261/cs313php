@@ -60,6 +60,7 @@
         <ul>
             <li><a href="assignments/02.03.PHP_Survey.php" target="_blank">02.03 Php Survey</a></li>
             <li><a href="assignments/04.03.PHP-Database.php" target="_blank">04.03.PHP-Database</a></li>
+            <li><a href="http://tomcat-cjackson.rhcloud.com/helloWorld/HelloServlet" target="_blank">HelloServlet</a></li>
         </ul>
             </div>
 
